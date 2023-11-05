@@ -20,7 +20,7 @@ pipeline {
 
           // Создание SSH-клиента
           sshagent(['web-server-private-key']) {
-            sh "ssh -o StrictHostKeyChecking=no ${remoteUser}@${remoteHost} mkdir -p ${remoteDir}"
+            // sh "ssh ${remoteUser}@${remoteHost} mkdir -p ${remoteDir}"
             sh "scp -r repository ${remoteUser}@${remoteHost}:${remoteDir}"
           }
         }
