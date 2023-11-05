@@ -15,7 +15,7 @@ pipeline {
         script {
           // Установка параметров соединения для SSH
           def remoteHost = '192.168.56.22'
-          def remoteUser = 'root'
+          def remoteUser = 'vagrant'
           def remoteDir = '/home/vagrant/web-ser'
 
           // Создание SSH-клиента
