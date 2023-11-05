@@ -4,9 +4,7 @@ pipeline {
   stages {
     stage('Clone GitHub repo') {
       steps {
-        git branch: 'main', 
-            credentialsId: 'github-ssh-key', 
-            url: 'git@github.com:belov11/CI-CD-lemp.git'
+        git 'https://github.com/belov11/CI-CD-lemp.git'
       }
     }
 
