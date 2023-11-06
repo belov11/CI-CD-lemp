@@ -17,8 +17,10 @@ pipeline {
           def remoteDir = '/home/vagrant/web-ser/'
           def gitRepoUrl = 'https://github.com/belov11/CI-CD-lemp.git'
           def gitBranch = 'main'
-          def gitAPI = "<${gitRepoUrl}/archive/${gitBranch}/tar.gz>"
+          def gitAPI = "<${gitRepoUrl}/archive/refs/heads/${gitBranch}/tar.gz>"
           sh "curl -Lso web-app.tar.gz ${gitAPI}"
+
+          z
 
           // Создание SSH-клиента
           sshagent(['web-server-private-key']) {
