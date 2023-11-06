@@ -1,29 +1,18 @@
 pipeline {
-  agent any
-
-  stages {
-
-
-    stage('Transfer to Server') {
-      steps {
-        script {
-          // Установка параметров соединения для SSH
-          def remoteHost = '192.168.56.22'
-          def remoteUser = 'vagrant'
-          def remoteDir = '/home/vagrant/web-ser/'
-          def gitRepoUrl = 'https://github.com/belov11/CI-CD-lemp'
-          def gitBranch = 'main'
-          def gitAPI = "<${gitRepoUrl}/archive/refs/heads/${gitBranch}.tar.gz>"
-          sh "curl -Lso web-app.tar.gz ${gitAPI}"
-
-          // https://github.com/belov11/CI-CD-lemp/archive/refs/heads/main.tar.gz
-
-          // Создание SSH-клиента
-          sh '''
-            ssh ${remoteUser}@${remoteHost} 'tar -xf /${remoteDir}web-app.tar.gz -C ${remoteDir} --strip-components=1'
-          '''
-        }
-      }
+    agent any
+    environment {
+        ANSIBLE_PRIVATE_KEY=credentials('web-server-private-key')
     }
-  }
+    stages {
+        stage('Started ansible playbook') {
+            steps {
+                script {
+                    sh 'cd /etc/ansible/'
+                    sh 'ansible-playbook -i inventory/hosts --private-key=$ANSIBLE_PRIVATE_KEY playbooks/docker-install.yml'
+
+                    
+                }
+            }
+        }
+    }
 }
