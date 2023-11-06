@@ -2,11 +2,7 @@ pipeline {
   agent any
 
   stages {
-    stage('Clone GitHub repo') {
-      steps {
-        git 'https://github.com/belov11/CI-CD-lemp.git'
-      }
-    }
+
 
     stage('Transfer to Server') {
       steps {
