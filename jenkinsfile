@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        ANSIBLE_PRIVATE_KEY=credentials('web-server-private-key-new')
+        ANSIBLE_PRIVATE_KEY=credentials('jenkins-server')
     }
     stages {
         stage('Started ansible playbook') {
