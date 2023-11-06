@@ -19,11 +19,9 @@ pipeline {
           // https://github.com/belov11/CI-CD-lemp/archive/refs/heads/main.tar.gz
 
           // Создание SSH-клиента
-          sshagent(['web-server-private-key']) {
-            //sh "git clone https://github.com/belov11/CI-CD-lemp.git
-            sh "ssh ${remoteUser}@${remoteHost} mkdir -p ${remoteDir}"
-            sh "scp -r /home/vagrant/web-app.tar.gz ${remoteUser}@${remoteHost}:${remoteDir}"
-          }
+          sh '''
+            ssh ${remoteUser}@${remoteHost} 'tar -xf /${remoteDir}web-app.tar.gz -C ${remoteDir} --strip-components=1'
+          '''
         }
       }
     }
