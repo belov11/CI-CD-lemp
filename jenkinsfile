@@ -7,7 +7,8 @@ pipeline {
         stage('Started ansible playbook') {
             steps {
                 script {
-                    sh 'ansible-playbook -i /etc/ansible/hosts --private-key=$ANSIBLE_PRIVATE_KEY /etc/ansible/docker-install.yml'               
+                    // sh 'ansible-playbook -i /etc/ansible/hosts --private-key=$ANSIBLE_PRIVATE_KEY /etc/ansible/docker-install.yml'               
+                    sh 'ansible --version'
                 }
             }
         }
