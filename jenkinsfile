@@ -8,6 +8,8 @@ pipeline {
             steps {            
                 sh 'ansible --version'
                 sh 'whoami'
+                sh 'sudo su vagrant'
+                sh 'whoami'
                 // sh 'ansible-playbook -i /etc/ansible/hosts /etc/ansible/docker-install.yml'
                 withCredentials([sshUserPrivateKey(credentialsId: 'web-app-private-key', keyFileVariable: 'ANSIBLE_PRIVATE_KEY')]) {
                 // используем credentials и записываем их содержание во временный файл доступный по пути ANSIBLE_PRIVATE_KEY
