@@ -3,9 +3,7 @@ pipeline {
     stages {
         stage('Started ansible playbook') {
             steps {            
-                sh '''
-                    ansible --version'
-                '''
+                sh 'ansible --version'
             }
         }
     }
