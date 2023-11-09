@@ -1,8 +1,6 @@
 pipeline {
     agent {
-        node {
-            label 'web-app-node'
-        }
+        any
     }
     // environment {
         // ANSIBLE_PRIVATE_KEY=credentials('ansible-private-key')
