@@ -10,7 +10,7 @@ pipeline {
                 // sh 'ansible-playbook -i /etc/ansible/hosts --private-key=$ANSIBLE_PRIVATE_KEY /etc/ansible/docker-install.yml'
                 withCredentials([sshUserPrivateKey(credentialsId: 'github-ssh-key', keyFileVariable: 'ANSIBLE_PRIVATE_KEY')]) {
                 // используем credentials и записываем их содержание во временный файл доступный по пути PRIVATE
-                 sh 'ansible-playbook -i /etc/ansible/hosts --private-key=$ANSIBLE_PRIVATE_KEY /etc/ansible/docker-install.yml'
+                 sh 'ansible-playbook -i /etc/ansible/hosts /etc/ansible/docker-install.yml --private-key=$ANSIBLE_PRIVATE_KEY'
                 //используем переменную с помощью Ansible
                 }
             }
