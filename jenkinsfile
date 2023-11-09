@@ -9,7 +9,7 @@ pipeline {
                 sh 'ansible --version'
                 sh 'whoami'
                 // sh 'ansible-playbook -i /etc/ansible/hosts /etc/ansible/docker-install.yml'
-                withCredentials([sshUserPrivateKey(credentialsId: 'ansible-private-key', keyFileVariable: 'ANSIBLE_PRIVATE_KEY')]) {
+                withCredentials([sshUserPrivateKey(credentialsId: 'jenkins-private-key', keyFileVariable: 'ANSIBLE_PRIVATE_KEY')]) {
                 // используем credentials и записываем их содержание во временный файл доступный по пути ANSIBLE_PRIVATE_KEY
                 sh 'ansible-playbook -i /etc/ansible/hosts /etc/ansible/docker-install.yml --private-key=$ANSIBLE_PRIVATE_KEY'
                 //используем переменную с помощью Ansible
