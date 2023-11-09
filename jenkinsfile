@@ -1,8 +1,8 @@
 pipeline {
     agent any
-    environment {
+    // environment {
         // ANSIBLE_PRIVATE_KEY=credentials('ansible-private-key')
-    }
+    // }
     stages {
         stage('Started ansible playbook') {
             steps {            
