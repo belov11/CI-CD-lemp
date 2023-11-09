@@ -1,9 +1,13 @@
 pipeline {
     agent any
+    environment {
+        ANSIBLE_PRIVATE_KEY=credentials('ansible-private-key')
+    }
     stages {
         stage('Started ansible playbook') {
             steps {            
                 sh 'ansible --version'
+                sh 'ansible-playbook -i /etc/ansible/hosts --private-key=$ANSIBLE_PRIVATE_KEY /etc/ansible/docker-install.yml'
             }
         }
     }
