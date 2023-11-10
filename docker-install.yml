@@ -65,6 +65,11 @@
         name: vagrant
         groups: docker
         append: yes
-
+        
+    - name: Create keyrings directory
+      file:
+        path: /home/vagrant/project/docker-compose.yml
+        mode: '0755'
+        
     - name: starting docker compose
       command: docker-compose -f ./project/docker-compose.yml up -d
