@@ -16,6 +16,8 @@ services:
       - db
     volumes:
       - wordpress:/var/www/html
+      - ./apache/000-default.conf:/etc/apache2/sites-available/000-default.conf
+      - ./apache/ports.conf:/etc/apache2/ports.conf
     networks:
       frontend:
         ipv4_address: 172.16.1.6
