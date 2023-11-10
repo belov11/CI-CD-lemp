@@ -49,7 +49,7 @@
         - docker-buildx-plugin
         - docker-compose-plugin
 
-    - name: check docker is active
+    - name: Check docker is active
       service:
         name: docker
         state: started
@@ -66,10 +66,10 @@
         groups: docker
         append: yes
         
-    - name: Create keyrings directory
+    - name: Change permissions for docker-compose file
       file:
         path: /home/vagrant/project/docker-compose.yml
         mode: '0755'
         
-    - name: starting docker compose
-      command: docker-compose -f ./project/docker-compose.yml up -d
+    - name: Starting docker compose
+      command: docker-compose -f /home/vagrant/project/docker-compose.yml up -d
