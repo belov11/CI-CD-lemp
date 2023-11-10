@@ -3,7 +3,6 @@
   become: true
   tasks:
     - name: install docker
-      #shell: /etc/ansible/get-docker.sh
       command: sh get-docker.sh
 
     - name: check docker is active
