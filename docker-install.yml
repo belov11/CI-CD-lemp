@@ -65,11 +65,11 @@
         name: vagrant
         groups: docker
         append: yes
-        
+
     - name: Change permissions for docker-compose file
       file:
         path: /home/vagrant/project/docker-compose.yml
         mode: '0755'
-        
+
     - name: Starting docker compose
       command: docker-compose -f /home/vagrant/project/docker-compose.yml up -d
